@@ -1,0 +1,101 @@
+<script defer src="/admin.js"></script>
+<div class="text">
+<h3> {{title}} </h3>
+<h3> {{text}} </h3>
+<h3> {{important}} </h3>
+<div>
+    <p><h3>
+      Чтобы добавить новую модель часов, заполните форму ниже
+    </h3></p>
+    <div class="newWatches">
+<form id="newWatches">
+  <div class="input-group mb-3">
+    <input 
+    name="name"
+    type="text"
+    class="form-control"
+    placeholder="название модели"
+    aria-label="description"
+    aria-describedby="basic-addon2"/>
+    </div>
+    </div>
+<div class="input-group mb-3">
+    <input 
+    name="description"
+    type="text"
+    class="form-control"
+    placeholder="описание модели"
+    aria-label="description"
+    aria-describedby="basic-addon2" />
+    </div>
+<div class="input-group mb-3">
+    <input 
+    name="photo"
+    type="file"
+    class="form-control"
+    placeholder="фото модели"
+    aria-label="description"
+    aria-describedby="basic-addon2"/>
+    </div>
+    <div>
+    <button type="submit" class="btn btn-outline-primary" style="margin: 5px;"><a >Загрузить модель на сайт</a></button>
+    </div>
+  </form>
+  </div>
+
+
+<div id='watches-container'  class='watches-container'>
+  <ul id="watchesList">
+  {{#if watches}}
+    {{#each watches}}
+    <article data-id ="{{id}}" id="{{this.id}}">
+        <div id="allWatches" class="allWatches">
+        <p>
+            <span class='name'>{{this.name}}</span>
+            <span class='description'>{{this.description}}</span>
+            <img class='photo' width='100' src = 'watchesUploads/{{this.photo}}'> 
+            {{!-- <button type="submit" name="changePhoto" class="changePhoto"> Удалить </button> --}}
+            {{!-- <button type="submit" name="changePhoto" class="changePhoto btn-outline-primary" style="margin: 5px;"><a>Удалить</a></button> --}}
+
+            <span class='likes'>{{this.likes}}</span>
+
+        </p>
+            {{!-- <button type="submit" name="deleteWatches" class="deleteWatches"> Удалить </button> --}}
+          <button type="click" name="deleteWatches" class="deleteWatches btn-outline-primary" style="margin: 5px;"><a>Удалить</a></button>
+        </div>
+    </article>
+    {{/each}}
+  </ul>
+
+  {{else}}
+  <div id="noWatches"> <h3>Сейчас нет ни одной модели часов. Пожалуйста, добавьте модель часов! </h3></div>
+  {{/if}}
+</div>
+
+
+<div id='customers-container'  class='customers-container'>
+  {{#if customers}}
+  <ul id="customersList">
+    {{#each customers}}
+    <article data-id ="{{id}}" id="{{this.id}}">
+        <div class="allcustomers">
+        <p>
+            <span class='name'>{{this.name}}</span>
+            <span class='phone'>{{this.phone}}</span>
+            <span class='email'>{{this.email}}</span>
+            <span class='description'>{{this.description}}</span>
+            <span class='photo'>{{this.photo}}</span>
+        </p>
+            {{!-- <button type="submit" name="contactCustomers" class="contactCustomers"> Связаться с покупателем! </button> --}}
+            <button type="submit" name="contactCustomers" class="contactCustomers btn-outline-primary" style="margin: 5px;"><a>Связаться с покупателем!</a></button>
+        </div>
+    </article>
+    {{/each}}
+  </ul>
+  {{else}}
+  <p><ul><h3>Еще никто не оставлял контакты </h3></ul></p>
+  {{/if}}
+<a href="/qwert.csv">Скачать данные</a>
+</div>
+</div>
+</div>

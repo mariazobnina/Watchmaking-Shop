@@ -1,0 +1,34 @@
+<div class="loginPageContainer">
+<h1>{{title}}</h1>
+<div class="container">
+{{!-- enctype="multipart/form-data" --}}
+<form method="POST" action="/login" >
+<div class="input-group mb-3">
+    <input    
+    name="email"
+    type="text"
+    class="form-control"
+    placeholder="почта"
+    aria-label="description"
+    aria-describedby="basic-addon2"/>
+    </div>
+    <div class="input-group mb-3">
+    <input    
+    name="password"
+    type="password"
+    class="form-control"
+    placeholder="пароль"
+    aria-label="description"
+    aria-describedby="basic-addon2"/>
+    </div>
+    <button type="submit" class="btn btn-outline-primary"  style="margin: 5px;">Вход</button>
+  </form>
+<div class="urls_container"> 
+  {{#if acsessGranted }}
+          <span> {{acsessGranted}} </span>
+{{else }}
+  <p> {{acsessDenied}} </p>
+  {{/if}}
+</div>
+</div>
+</div>
